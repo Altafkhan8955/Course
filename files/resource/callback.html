@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		#scroll{
+			width: 200px;
+			height: 100px;
+			overflow: scroll;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<h1>scroll event </h1>
+	<p id="scroll" onscroll="onScroll()">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<!--<h4>This is a function 3seconds leter Execute</h4>
+	<p id="result"></p>
+	<button value="redirect" onclick="redirect()">redirect</button>-->
+
+	<script type="text/javascript">
+		//setTimeout(function(){
+		//	myFunction("Codetech is Awesome!");
+		//},3000);
+		//function myFunction(value){
+		//	document.getElementById("result").innerHTML=value;
+		//}
+
+		//let myPromise = new promise(function(myResolve, myReject)
+		//	setTimeout(function(){
+		//		myResolve("Codetech is Awesome!")
+		  //  },3000);
+		    //myPromise.then(function(value)){
+		    //	document.getElementById("result").innerHTML=value;
+		//};
+
+		//new Promise(function(myResolve,myReject){
+		//	setTimeout(function(){myResolve(1)})
+		//}).then(function(value){
+		//	alert(value);
+		//	return value*2;
+		//}).then(function(value){
+		//	alert(value);
+		//	return value*3;
+		//}).then(function(value){
+		//	alert(value);
+		//	return value*4;
+		//})
+
+		//function getUserById(id){
+			//if(typeof id != 'number' || id<0 ){
+			//	throw new error ("Invalid Id Number");
+			//}
+			//return new Promise((resolve, reject) =>{
+			//	resolve({
+			//		id: id,
+			//		username: username
+			//	});
+			//});
+		//}
+		//getUserById(7,"Altaf")
+		//.then(user => console.log(user.username))
+		//.catch(error => console.log (error));
+
+		//async function myfunction(){
+		//	return Promise.resolve("hello!")
+		//}
+
+		//async function myDisplay(){
+		//	let promise = new Promise(function(resolve,reject){
+		//		setTimeout(function(){resolve("Codetech is Awesome!")},3000)
+		//	});
+		//	document.getElementById('result').innerHTML=await promise;
+		//}
+		//myDisplay()
+         //within()
+		//var arr = [1,2,3,4,5,6,7,8,9]
+		//arr.within(2)
+		//document.writeln(arr + "<br>")
+
+		//entries
+		//var arr = [1,2,3,4,5,6,7,8,9]
+		//arr.entries(2)
+		//document.writeln(arr.next().value)
+
+		//fill()
+		//var arr = [1,2,3,4,5,6,7,8,9]
+		//arr.fill(21)
+		//document.writeln(arr + "<br>")
+
+		//var arr1 = [1,2,3,4,5,6,7,8,9]
+		//arr1.fill(21,2)
+		//document.writeln(arr1 + "<br>")
+
+
+		//var arr1 = [1,2,3,4,5,6,7,8,9]
+		//arr1.fill(21,2,7)
+		//document.writeln(arr1)
+
+		//find()
+		//var arr1 = [1,2,3,4,5,6,7,8,9]
+		//arr1.find(2)
+		//document.writeln(arr1)
+
+		//findindex()
+		//var arr1 = [1,2,3,4,5,6,7,8,9]
+		//arr1.fill(2)
+		//document.writeln(arr1)
+
+		//forEach()
+		//var arr = [5,10,20]
+	
+		//arr.forEach(function(value){
+		//	return value*2
+		//});
+		//document.writeln(value)
+
+		//indexof()
+		//var arr = [2,4,5,6,8,9]
+		//var result = arr.indexof(2)
+		//document.writeln(result)
+
+		//set() example and method
+		//add()
+		//var s = new Set()
+		//s.add("Javascript")
+		//s.add("python")
+		//s.add("Django")
+	
+		//for(value of s){
+		//	document.writeln(value + "<br>")
+		//}
+
+		//clear()
+		//var result = s.clear()
+		//document.writeln(result)
+
+		//delete()
+		//var d = s.delete("python")
+		//document.writeln(d)
+
+		//entries()
+		//var e = s.entries()
+		//document.writeln(e.next().value + "<br>")
+		//document.writeln(e.next().value + "<br>")
+		//document.writeln(e.next().value + "<br>")
+		//document.writeln(e.next().value + "<br>")
+
+		//s.forEach(function(value1,value2,s){
+		//	document.writeln("key[" + value1 + "] : " + value2 + "<br>")
+		//})
+         //has()
+		//var h = s.has("python")
+		//document.writeln(h + "<br>")
+		//var j = s.has("java")
+		//document.writeln(j + "<br>")
+
+
+		// javasripts Map() method and example
+		//var m = new Map()
+		//m.set("python")
+		//m.set("javascript")
+		//m.set("django")
+         
+         //clear()
+		//var c = m.clear()
+		//document.write(c)
+
+		//delete()
+		//var d = m.delete("django")
+		//document.writeln(d)
+		//var D = m.delete("java")
+		//document.writeln(D)
+
+		//entries()
+		//var result = m.entries()
+		//document.writeln(result.next().value + "<br>")
+		//document.writeln(result.next().value + "<br>")
+		//document.writeln(result.next().value + "<br>")
+		//document.writeln(result.next().value + "<br>")
+
+		//forEach()
+		//m.forEach(function(value1,value2,m){
+		//	document.writeln("key[" + value1 +"] : " + value2 + "<br>")
+		//})
+
+		//Example WeakMap() and method
+		//set() and get()
+
+		//var w = new WeakMap()
+		//var object1 = {}
+		//var object2 = {}
+		//var object3 = {}
+
+		//w.set(object1,"python")
+		//w.set(object2,"django")
+		//w.set(object3,"flask")
+		//document.writeln(w.get(object1) + "<br>")
+		//document.writeln(w.get(object2) + "<br>")
+		//document.writeln(w.get(object3) + "<br>")
+		//has()
+		//document.writeln(w.has(object2) + "<br>")
+		//document.writeln(w.has(object5))
+		//delete()
+		//var d = w.delete(object2)
+		//document.writeln(d)
+
+		//callback() Function
+		//function getData(x,y,callback){
+		//	document.writeln("multiplication of" +x+ "and" +x+y+ "is :" +(x+y)+ "<br>")
+		//	callback()
+		//}
+		//function showData(){
+		//	document.writeln("this is the statement writen through the callback //function");
+		//}
+		//getData(10,20,showData)
+
+		//function getData(){
+		//	var x = prompt("Enter the value of x :")
+		//	var y = prompt("Enter the value of y :")
+
+		//}
+		//function showData(x,y){
+		//	alert("the value of x+y :" + x+y)
+		//}
+		
+		//getData(10,20,showData)
+
+		//Closure() Example
+
+		//function function1(){
+		//	var a = 10
+		//	function function2(){
+		//		return a;
+		//	}
+		//	return function2;
+		//}
+		//var result = function1();
+		//document.writeln(result())
+
+		//Date method Example()
+		//var d1 = new Date("10/02/1969");
+		//var d2 = new Date();
+
+		//var difference = d2.getTime() - d1.getTime();
+
+		//var result = (difference/31536000000).tofixed(0);
+		
+		//document.writeln("Diffirence od d2 and d1 is :" + result + "year");
+
+		//Date format
+		//Iso date()
+		//var value = new Date("2023-03-1")
+		//document.getElementById("result").innerHTML = value;
+
+		//short date()
+		//var value = new Date("01/03/2023")
+		//document.getElementById("result").innerHTML = value;
+
+		//Long date()
+		//var value = new Date("Aug 01 2023")
+		//document.getElementById("result").innerHTML = value;
+
+		//parse method date
+		//var d1 = new Date("10/02/1969")
+		//var p1 = Date.parse(d1)
+		//document.writeln(p1)
+
+		//function redirect(){
+		//	window.location.replace('https://www.google.com')
+		//}
+
+		//Example Global and Local variable
+		//var a = 200;
+		//function example(){
+		//	var a = 100;
+		//	document.writeln("value of under the function " + a + "<br>")
+		//}
+		//example()
+		//document.writeln("value of outsite the function " + a)
+
+		//onscroll event
+		function onScroll(){
+			document.getElementById("scroll").style.background = "lightgreen";
+			document.getElementById("scroll").style.color = "blue";
+		}
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+    .video{
+        overflow-y: scroll;
+    }
+  .group {
+    background-color: #000;
+    color: #fff;
+    
+  }
+  a:hover{
+    text-decoration: none;
+    color: #fff;
+  }
+  .no-preview{
+    cursor: no-allowed;
+  }
+ 
+</style>
+<div class="row">
+<div class="col">
+<div class="border rounded p-2">
+<div class="d-flex justify-content-between">
+<div id="prev">
+ {% if prev_lecture %}
+<a class="btn btn-success " href="?lecture={{prev_lecture}}">Previus</a>
+{% else %}
+<a class="btn btn-success disabled" href="javascript:void(0);">Previus</a>
+{% endif %}       
+</div>
+<div id="next">
+{% if next_lecture %}
+<a class="btn btn-success " href="?lecture={{next_lecture}}">Next</a>
+{% else %}
+<a class="btn btn-success disabled" href="javascript:void(0);">Next</a>
+{% endif %}
+
+</div>
+</div>
+<div>
+</div>
+<div class="container-fluid">
+    <div class="card p-3">
+    <div class="row">
+        <div class="col">
+            <iframe id="player" width="560" height="315"
+             src="https://www.youtube.com/embed/{{video.video_id}}" 
+             title="YouTube video player" frameborder="0" 
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+             allowfullscreen></iframe>
+        </div>
+        <div class="col-3 video">
+            <ul class="list-group" id="video_list">
+                {% for v in course.video_set.all%}
+                <li class="list-group-item {% if v == video %} group {% endif %}">
+                    <a class="
+                    {% if v.is_preview %} text-muted no-preview {% endif %}
+                    {% if v == video %} video {% endif %} "
+                    href="?lecture={{v.serial_number}}">{{v.serial_number}} 
+                    {{v}}</a></li>
+                {% endfor %}
+            
+            </ul>
+        </div>
+
+       
+        </div>
+         <!--course detail-->
+         <div class="mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{course.name}}<h5>
+                        <p class="card-text">{{course.description}}</p>
+                </div>
+    </div>
+</div>
+
+ <!--course detail-->
+ <div class="mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Prerequisite<h5>
+                <p class="card-text">
+                    {% for pre in course.prerequisite_set.all %}
+                    <li class="">{{pre.description}}</li>
+                    {% endfor %}
+                </p>
+        </div>
+</div>
+</div>
+
+<!--course detail-->
+<div class="mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Learning<h5>
+                <p class="card-text">
+                    {% for l in course.learning_set.all %}
+                    <li class="">{{l.description}}</li>
+                    {% endfor %}
+                </p>
+        </div>
+</div>
+</div>
+
+
+
+{% endblock %}

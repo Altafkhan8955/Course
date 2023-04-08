@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load custom %}
+<div class="container-fluid">
+    <br>
+   
+    
+    <div class="row">
+        <div class="col mx-auto">
+            <div class="card ml-auto" style="width: 18rem">
+                <!--<img class="card-img-top" scr="{{course.thumbnail.url}}" alt="Card image gap">-->
+                <img class="card-img-top" src="{{course.thumbnail.url}}" alt="Card image gap">
+                <div class="card-body">
+                    <h5 class="card-title">{{course.name}}</h5>
+                    <p class="card-text">
+                        Save {{course.discount}}%
+                            <br>
+                        <span>
+                            <del>&#8377 {{course.price}}</del>
+                            &nbsp;
+                            
+                            <span>&#8377 {% cal_sellprice course.price course.discount %}</span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                <p class="display-5">{{course.name}}</p>
+                <hr>
+                {% if coupon %}
+                <p class="alert alert-light border">
+                Coupon Code Applied
+                You have Got {{coupon.dicount}} % Discount
+            </p>
+            <br>
+            <p class="display-5">Payable Amount : <b>{% cal_sellprice course.price coupon.discount as value %} {{value|rupee}}</b></P>
+                <a class="btn btn-light border" href="?action=create_payment" id="rzp-button1">Continue To Pay<a>
+             {% else %}   
+
+                <p class="display-5">Payable Amount : <b>{% cal_sellprice course.price course.discount as value %} {{value|rupee}}</b></P>
+                <a class="btn btn-light border" href="?action=create_payment" id="rzp-button1">Continue To Pay<a>
+                {% endif %}
+            </div>
+            <br>
+            <div class"border p-4 rounded border-success">
+                <p>Coupon Code</p>
+                <form method="get">
+                    {% if couponcode_message %}
+                    <p class="alert alert-info">{{couponcode_message}}</p>
+                    {% endif %}
+                    
+                    <div class="col-lg-5 form-group">
+                        <input type="text" name="couponcode" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="apply" class="btn btn-primary">
+                    </div>
+                
+                </form>
+
+            </div>
+   
+    </div>
+</div>
+
+</div>
+
+<!--<button id="rzp-button1">Pay</button>-->
+{% if order is not None %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_gtUZuROVyZmEI8", // Enter the Key ID generated from the Dashboard
+    "amount": "{{order.amount}}",
+    "name": "Codetech", //your business name
+    "description": "Payment for {{course.name}}",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "callback_url": "http://127.0.0.1:8000/verifypayment",
+    "prefill": {
+        "name": "Codetech", //your customer's name
+        "email": "{{user.email}}",
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+    rzp1.open();
+
+
+</script>
+{% endif %}
+{% if error is not None %}
+<script>
+    window.onload = () =>{
+        alert("{{error}}")
+    }
+
+</script>
+{% endif %}
+
+{% endblock %}
