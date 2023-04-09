@@ -127,5 +127,5 @@ MEDIA_ROOT = BASE_DIR
 
 MEDIA_URL = "/media/"
 
-KEY_ID = "rzp_test_gtUZuROVyZmEI8"
-KEY_SECRET = "v1gvbPND1PaoMLKjIXrFDF3z"
+KEY_ID = "Your id"
+KEY_SECRET = "Your secret_key"
